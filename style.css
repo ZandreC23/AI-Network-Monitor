@@ -1,0 +1,30 @@
+body {
+    font-family: Arial, sans-serif;
+    background: #0f172a;
+    color: white;
+    margin: 0;
+    padding: 20px;
+  }
+  h1 {
+    color: #38bdf8;
+  }
+  .device {
+    background: #1e293b;
+    padding: 10px;
+    margin: 10px 0;
+    border-left: 10px solid transparent;
+    border-radius: 8px;
+    transition: border-color 0.3s ease, background 0.3s ease;
+  }
+  .good {
+    border-color: #22c55e;
+    background: #14532d;
+  }
+  .warning {
+    border-color: #facc15;
+    background: #78350f;
+  }
+  .danger {
+    border-color: #ef4444;
+    background: #7f1d1d;
+  }
