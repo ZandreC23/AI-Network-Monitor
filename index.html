@@ -1,17 +1,81 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Network Health Monitor</title>
-    <p>(This AI-powered network health dashboard helps small businesses spot issues before their devices go offline. Unlike complex tools made for IT experts, it offers a simple, color-coded interface that shows real-time device status and ping updates. The goal is to alert users early — so they can act before a crash happens. Planned AI features include smart alerts, suggestions like “Restart your router,” pattern detection, and predictive monitoring using rule-based logic and AI tools like OpenAI)</p>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NetPulse — Network Health Monitor</title>
+  <meta name="description" content="A network health dashboard for small businesses: live device status, rule-based early-warning alerts, and simple trend-based prediction.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>🧠 AI Network Health Monitor (In Progress)</h1>
-    <p>(This AI-powered network health dashboard helps small businesses spot issues before their devices go offline. Unlike complex tools made for IT experts, it offers a simple, color-coded interface that shows real-time device status and ping updates. The goal is to alert users early — so they can act before a crash happens. Planned AI features include smart alerts, suggestions like “Restart your router,” pattern detection, and predictive monitoring using rule-based logic and AI tools like OpenAI)</p>
-  <div id="dashboard"></div>
+  <!-- Flowing ambient background -->
+  <div class="ambient" aria-hidden="true">
+    <span class="blob blob-1"></span>
+    <span class="blob blob-2"></span>
+    <span class="blob blob-3"></span>
+  </div>
+
+  <div class="demo-banner" id="demoBanner">
+    <strong>Demo mode.</strong> Device data is simulated — a browser can't ping real hardware.
+    In production this connects to a lightweight monitoring agent that performs the actual checks.
+    <button id="dismissBanner" aria-label="Dismiss">×</button>
+  </div>
+
+  <header class="topbar">
+    <div class="brand">
+      <span class="pulse-dot" aria-hidden="true"></span>
+      <div>
+        <h1>NetPulse</h1>
+        <p class="tagline">Network health monitoring for small businesses</p>
+      </div>
+    </div>
+    <div class="controls">
+      <button id="incidentBtn" class="btn btn-ghost">Simulate incident</button>
+      <button id="pauseBtn" class="btn btn-primary" aria-pressed="false">Pause</button>
+    </div>
+  </header>
+
+  <main>
+    <!-- Health summary hero -->
+    <section class="hero" aria-label="Overall network health">
+      <div class="health-ring" id="healthRing">
+        <div class="health-ring-inner">
+          <span class="health-pct" id="healthPct">—</span>
+          <span class="health-label">healthy</span>
+        </div>
+      </div>
+      <div class="hero-stats">
+        <div class="stat"><span class="stat-num" id="statOnline">—</span><span class="stat-cap">Online</span></div>
+        <div class="stat"><span class="stat-num stat-warn" id="statDegraded">—</span><span class="stat-cap">Degraded</span></div>
+        <div class="stat"><span class="stat-num stat-crit" id="statOffline">—</span><span class="stat-cap">Offline</span></div>
+        <div class="stat"><span class="stat-num" id="statChecked">—</span><span class="stat-cap">Last check</span></div>
+      </div>
+    </section>
+
+    <div class="grid">
+      <!-- Device tiles -->
+      <section class="panel devices" aria-label="Devices">
+        <h2 class="panel-title">Devices</h2>
+        <div class="device-list" id="deviceList"></div>
+      </section>
+
+      <!-- Alerts + suggestions -->
+      <section class="panel alerts" aria-label="Alerts and suggestions">
+        <h2 class="panel-title">Alerts &amp; suggestions</h2>
+        <ul class="alert-list" id="alertList">
+          <li class="alert-empty">All quiet. No alerts right now.</li>
+        </ul>
+      </section>
+    </div>
+  </main>
+
+  <footer class="foot">
+    <p>NetPulse · rule-based monitoring with simple trend prediction · <a href="https://github.com/ZandreC23" target="_blank" rel="noopener">github.com/ZandreC23</a></p>
+  </footer>
+
   <script src="script.js"></script>
 </body>
 </html>
-
